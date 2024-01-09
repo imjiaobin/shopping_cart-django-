@@ -1,0 +1,22 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        {% for product in products %}
+		<div class="col-lg-4">
+             <img class="thumbnail" src="{{product.imageURL}}"><!-- immageURL來自views product的裝飾器 -->
+			   <div class="box-element product">
+				    <h6><strong>{{product.name}}</strong></h6>
+				    <hr>
+
+				    <button data-product={{product.id}} data-action='add' class="btn btn-outline-secondary add-btn update-cart">加入購物車</button>
+				    <!--以update-cart加入顯示購物車商品數量的監聽事件-->
+				    <!--data-product={{product.id}}:顯示購物車商品數量的監聽事件-->
+				    <!--data-action='add':點擊加入購物車後,顯示在購物車商品數量的監聽事件-->
+				    <a class="btn btn-outline-success" href="#">詳細</a>
+				    <h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+			    </div>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock content %}
